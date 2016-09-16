@@ -1,0 +1,1 @@
+docker run --net=sledilec --name sledilec-st -d -p 80:80 sledilec-st

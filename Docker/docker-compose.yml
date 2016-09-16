@@ -1,0 +1,28 @@
+version: '2'
+services:
+    sledilec-ps:
+        build:
+             context: ./Pgsql
+        image: sledilec-ps
+        container_name: sledilec-ps
+        volumes:
+            - "/var/lib/docker/postgresql/data:/var/lib/postgresql/data"
+        networks:
+            - sledilec
+        ports:
+        - "5423:5423"
+        environment:
+            - POSTGRES_PASSWORD=skrivnost
+    sledilec-st:
+        depends_on:
+            - sledilec-ps
+        build:
+            context: ./NetCore
+        image: sledilec-st
+        networks:
+            - sledilec
+        ports:
+            - "80:80"
+networks:
+    sledilec:
+        driver: "bridge"

@@ -1,0 +1,1 @@
+docker run --ip=172.26.1.4 -d -v /var/log/nginx-sledilec:/var/log/nginx-sledilec --name sledilec-ng --net=sledilec -p 8080:80 mihamarkic/sledilec-nginx
